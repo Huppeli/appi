@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from "./Home.css";
 import bg_image from '../../images/laptop_splash.jpg';
 import bg_image2 from '../../images/sketch.jpg';
-import { Container, Header, Responsive, Grid } from 'semantic-ui-react';
+import { Container, Header, Responsive, Grid, Divider } from 'semantic-ui-react';
 import ProjectView from '../ProjectView/ProjectView';
 
 class Home extends Component {
@@ -11,9 +11,9 @@ class Home extends Component {
     this.state = {
       projects: [
         {id: 0, projectName: "Poggers" , projectColor: "orange", projectType: ["react"]},
-        {id: 1, projectName: "Nammers" , projectColor: "green", projectType: ["android"]},
-        {id: 2, projectName: "Anotha one" , projectColor: "blue", projectType: ["gitlab"]},
-        {id: 3, projectName: "Anotha one" , projectColor: "blue", projectType: ["gitlab","react"]},
+        {id: 1, projectName: "Nammers" , projectColor: "green", projectType: ["android","database"]},
+        {id: 2, projectName: "Anotha one" , projectColor: "blue", projectType: ["gitlab","aws","js"]},
+        {id: 3, projectName: "Anotha one" , projectColor: "violet", projectType: ["gitlab","react"]},
       ]
     }
   }
@@ -52,24 +52,25 @@ class Home extends Component {
           </Container>    
         </Responsive>
         <Responsive
-          style={{
-            
+          style={{            
             minHeight: '100vh'
           }}
         >
-        <Grid>
-          <Grid.Row columns={this.state.projects.length}>
-            {this.state.projects.map((project, index) => {
-            return (
-              
-              <Grid.Column key={index}>
-              <ProjectView projectName={project.projectName} projectColor={project.projectColor} projectType={project.projectType} /> 
-              </Grid.Column>
-              
-              );
-            })}
-          </Grid.Row>
-        </Grid>
+          <Header
+          as='h2'
+          content="Here's some projects I've done"
+          />
+          <Grid>
+            <Grid.Row columns={this.state.projects.length}>
+              {this.state.projects.map((project, index) => {
+              return (              
+                <Grid.Column key={index}>
+                  <ProjectView projectName={project.projectName} projectColor={project.projectColor} projectType={project.projectType} /> 
+                </Grid.Column>              
+                );
+              })}
+            </Grid.Row>
+          </Grid>
         </Responsive>
       </div>
     );
